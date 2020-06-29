@@ -1,6 +1,8 @@
 class Jogo {
   constructor() {
     this.inimigoAtual = 0;
+
+    this.inimigo;
   }
 
   setup() {
@@ -10,22 +12,30 @@ class Jogo {
     hipsta = new Hipsta(imagemHipsta, 270, 220, 16);
     hipsta.posiçãoHorizontal = 70;
 
+    //ninja = new Hipsta(imagemNinja, 458, 363, 10);
+    //ninja.escala(0.5);
+    //ninja.posiçãoHorizontal = 70;
+
     const gotinha = new Inimigo(imagemGotinha, 100, 105, 28);
     gotinha.posiçãoHorizontal = width;
     inimigos.push(gotinha);
 
     const gotinhaVoadora = new Inimigo(imagemGotinhaVoadora, 150, 200, 16);
-    gotinhaVoadora.posiçãoVertical -= 500;
+    gotinhaVoadora.posiçãoVertical = 300;
+    gotinhaVoadora.posiçãoHorizontal = width;
     inimigos.push(gotinhaVoadora);
 
     const troll = new Inimigo(imagemTroll, 400, 400, 26);
-    troll.posiçãoHorizontal = width - 70;
+    troll.posiçãoHorizontal = width;
     troll.posiçãoVertical += 50;
     inimigos.push(troll);
+
+    this.inimigo = inimigos[this.inimigoAtual];
   }
 
   keyPressed(key) {
     if (key === "ArrowUp") {
+      //ninja.pula();
       hipsta.pula();
     }
     if (key === "ArrowRight"){
@@ -42,19 +52,22 @@ class Jogo {
     pontuacao.draw();
 
     hipsta.draw();
+    //ninja.draw();
+    this.inimigo.draw();
 
-    const inimigo = inimigos[this.inimigoAtual];
-    inimigo.draw();
-
-    if (inimigo.estáVisivelNaTela()) {
+    if (this.inimigo.estáVisivelNaTela()) {
       this.inimigoAtual = (this.inimigoAtual + 1) % inimigos.length;
-      inimigo.velocidade = parseInt(random(10, 30));
+      this.inimigo = inimigos[this.inimigoAtual];
+      this.inimigo.posiçãoHorizontal = width;
+
+      this.inimigo.velocidade = parseInt(random(10, 30));
     }
-    /*
-    if (hipsta.estáColidindo(inimigo)) {
+    
+    if (hipsta.estáColidindo(this.inimigo)) {
       image(imagemGameOver, width / 2 - 200, height / 2);
+      somDoJogo.stop();
       noLoop();
     }
-    */
+    
   }
 }

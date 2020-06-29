@@ -8,4 +8,5 @@ function preload() {
   imagemTroll = loadImage("imagens/inimigos/troll.png");
   somDoJogo = loadSound("sons/trilha_jogo.mp3");
   imagemGameOver = loadImage("imagens/assets/game-over.png");
+  imagemNinja = loadImage("imagens/personagem/ninja_sprite.png");
 }

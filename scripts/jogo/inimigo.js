@@ -11,6 +11,7 @@ class Inimigo extends Personagem {
   }
 
   move() {
-    this.posiçãoHorizontal -= this.velocidade;
+    if(this.posiçãoHorizontal > -(this.larguraPersonagem*2))
+      this.posiçãoHorizontal -= this.velocidade;
   }
 }

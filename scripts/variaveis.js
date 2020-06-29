@@ -13,6 +13,9 @@ let imagemGotinhaVoadora;
 let imagemTroll;
 let imagemGameOver;
 
+let ninja;
+let imagemNinja;
+
 let telaInicial;
 let jogo;
 

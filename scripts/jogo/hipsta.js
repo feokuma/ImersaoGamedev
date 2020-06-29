@@ -33,16 +33,32 @@ class Hipsta extends Personagem {
   }
 
   estáColidindo(inimigo) {
-    let precisão = 0.6;
-    let colisão = collideCircleCircle(
-      this.posiçãoHorizontal,
-      this.posiçãoVertical,
-      this.larguraPersonagem * precisão,
-      this.alturaPersonagem * precisão,
-      inimigo.posiçãoHorizontal,
-      inimigo.posiçãoVertical,
-      inimigo.larguraFrame * precisão,
-      inimigo.alturaFrame * precisão
+    let precisãoPosição = 0.3;
+    let precisãoTamanho = 0.6;
+    /*
+    noFill();
+    rect(
+      this.posiçãoHorizontal + (this.larguraFrame * precisãoPosição),
+      this.posiçãoVertical + (this.alturaFrame * precisãoPosição),
+      this.larguraPersonagem * precisãoTamanho,
+      this.alturaPersonagem * precisãoTamanho
+    );
+    rect(
+      inimigo.posiçãoHorizontal + inimigo.larguraPersonagem * precisãoPosição,
+      inimigo.posiçãoVertical + inimigo.larguraPersonagem * precisãoPosição,
+      inimigo.larguraFrame * precisãoTamanho,
+      inimigo.alturaFrame * precisãoTamanho
+    );
+    */
+    let colisão = collideRectRect(
+      this.posiçãoHorizontal + (this.larguraFrame * precisãoPosição),
+      this.posiçãoVertical + (this.alturaFrame * precisãoPosição),
+      this.larguraPersonagem * precisãoTamanho,
+      this.alturaPersonagem * precisãoTamanho,
+      inimigo.posiçãoHorizontal + (inimigo.larguraFrame * precisãoPosição),
+      inimigo.posiçãoVertical + (inimigo.alturaFrame * precisãoPosição),
+      inimigo.larguraFrame * precisãoTamanho,
+      inimigo.alturaFrame * precisãoTamanho
     );
 
     return colisão;

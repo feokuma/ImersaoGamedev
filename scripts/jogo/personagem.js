@@ -23,7 +23,7 @@ class Personagem {
   }
 
   estáVisivelNaTela(){
-    return (this.posiçãoHorizontal < -this.larguraPersonagem || this.posiçãoHorizontal > width);
+    return (this.posiçãoHorizontal < -this.larguraPersonagem);
   }
 
   draw() {
@@ -49,7 +49,7 @@ class Personagem {
     this.larguraPersonagem *= proporção;
     this.alturaPersonagem *= proporção;
 
-    this.posiçãoVertical = height - this.alturaPersonagem - this.alturaChão;
+    this.posiçãoVerticalInicial = height - this.alturaPersonagem - this.alturaChão;
   }
 
   anima() {
